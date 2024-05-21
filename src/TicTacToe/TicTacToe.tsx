@@ -1,14 +1,7 @@
 import Square from '../Square/Square.jsx';
 import { useEffect, useState } from 'react';
 
-function TicTacToe(){
-    //create a container div
-    //create a div for each row, give them classname of row
-    //for each row, we will have 3 squares,we do this with a new component. inside that comp we define the component as a button with a value child
-    
-    //then we can call the square component in the parent component 3times
-
-    // we need to useState on the squares in order to apply the effect when user clicks it
+function TicTacToe(){    
     const [squares, setSquares] = useState(Array(9).fill(''));
     const [isXTurn, setIsXTurn] = useState(true);
     const [status, setStatus] = useState('');
@@ -20,7 +13,7 @@ function TicTacToe(){
         setIsXTurn(!isXTurn);
         setSquares(cpySquares);
     }
-//we also need to calculate the winner, all winnable patterns:
+    //winnable patterns:
     function getWinner(squares){
         const winnerPatterns = [
             [0,1,2],
