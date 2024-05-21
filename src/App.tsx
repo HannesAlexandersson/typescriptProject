@@ -1,5 +1,5 @@
-import TicTacToe from "./Tic-tac-toe/Tic-tac-toe"
-import Title from './Title/Title'
+import TicTacToe from "./TicTacToe/TicTacToe";
+import Title from './Title/Title';
 
 
 function App() {
