@@ -1,11 +1,13 @@
-import Square from '../Square/Square.jsx';
+import Square from '../Square/Square.tsx';
 import { useEffect, useState } from 'react';
+import ConfettiExplosion from 'react-confetti-explosion';
 
 
 function TicTacToe(){    
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
+    const [isExploding, setIsExploding] = useState<boolean>(false);
     
     function handleClick(getCurrentSquare: number): void {
         const cpySquares: string[] = [...squares];
@@ -45,13 +47,15 @@ function TicTacToe(){
         if(!getWinner(squares) && squares.every(item => item !== '')){
             setStatus(`This is a draw! Please restart the game!`)
         }else if(getWinner(squares)){
+            setIsExploding(true);
             setStatus(`Winner is ${getWinner(squares)}!!!`)
         }else{
             setStatus(`Next player is ${isXTurn ? 'X' : 'O'}`)
         }
     }, [squares, isXTurn]);
     return(
-        <div className="ticTacToe-container">  
+        <div className="ticTacToe-container"> 
+        {isExploding && <ConfettiExplosion />}
             <div className="row">
                 <Square value={squares[0]} onClick={()=> handleClick(0)}/>
                 <Square value={squares[1]} onClick={()=> handleClick(1)}/>
