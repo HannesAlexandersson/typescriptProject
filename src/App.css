@@ -19,3 +19,23 @@
   margin-top: -1px;
   cursor: pointer;
 }
+.Btn-group{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+.gamemode-btn{
+  background: var(--primaryBg);
+  border-radius: 22px;
+  color: var(--primaryAccent);
+  padding: 1.5rem;
+  font-size: 1em;
+  border: 1px solid var(--primaryAccent);
+}
+.gamemode-btn.active{
+  background: var(--secondaryBg);
+}
+.gamemode-btn:active{
+  transform: scale(0.95);
+}

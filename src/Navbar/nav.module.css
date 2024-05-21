@@ -1,0 +1,32 @@
+.navWrapper{
+    background-color:var(--alternativeAccent);
+    padding: 1rem;
+}
+.list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.list > li{
+    margin-right: 1rem;
+    font-family: var(--defaultFont);
+    font-size: 1.1em;
+}
+.links{
+    color: var(--primaryAccent);
+    text-decoration: none;
+}
+.signInBtn{
+    background: none;
+    border: none;   
+    cursor: pointer;
+}
+.signInBtn > p{
+    color: var(--primaryAccent);
+    font-family: var(--defaultFont);
+    font-size: 1.1em;
+}

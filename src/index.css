@@ -1,16 +1,26 @@
+:root{
+  --primaryBg: darkslategray;
+  --secondaryBg: rgb(85, 116, 116);
+
+  --primaryAccent: goldenrod;
+  --secondaryAccent: #4CAF50;
+  --alternativeAccent: #3e8e41;
+  
+  --defaultFont: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 body{
-  background-color: darkslategray;
+  background-color: var(--primaryBg);;
   margin: auto;
 }
 .Title {
   text-align: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: var(--defaultFont);
   font-size: 3em;
   text-shadow: -4px 3px 12px black;
-  color: goldenrod;
+  color: var(--primaryAccent);
 }
 .restart-btn {
-  background-color: #4CAF50;
+  background-color:var(--secondaryAccent);
   border: none;
   color: white;
   padding: 10px 20px;
@@ -30,7 +40,7 @@ body{
 }
 
 .restart-btn:active {
-  background-color: #3e8e41;
+  background-color: var(#3e8e41);
 }
 .ticTacToe-container{
   clear: both;
