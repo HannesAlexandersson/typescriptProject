@@ -18,7 +18,7 @@ function App() {
           <TicTacToe />
         </>
       )}
-      {!loggedIn && <Title>Please log in to play the game.</Title>}
+      {!loggedIn && <Title>Please log in or sign up to play the game.</Title>}
     </>
   );
 }

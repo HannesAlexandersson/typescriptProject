@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import Login from '../Login/Login';
 import style from './nav.module.css';
 
 type HandleClickType = (value: boolean) => void;
@@ -6,9 +8,15 @@ type NavbarProps = {
     setLoggedIn: HandleClickType;
   };
 function Navbar({ setLoggedIn, loggedIn }: NavbarProps){
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+
+    const handleClosePopup = () => {
+      setShowPopup(false); 
+    };  
 
     const handleLoginClick = () => {
-        setLoggedIn(true);
+       /*  setLoggedIn(true); */
+       setShowPopup(true);
       };
     
       const handleLogoutClick = () => {
@@ -25,6 +33,7 @@ function Navbar({ setLoggedIn, loggedIn }: NavbarProps){
                {!loggedIn ? (
                    <button className={style.signInBtn} onClick={handleLoginClick}>                    
                         <p>Sign in</p>
+                        {showPopup && <Login onClose={handleClosePopup} />}
                     </button>
                     ): (
                     <button className={style.signInBtn} onClick={handleLogoutClick}>
@@ -35,6 +44,7 @@ function Navbar({ setLoggedIn, loggedIn }: NavbarProps){
                </li>      
            </ul>
         </div>
+        
        );
      }
 export default Navbar
