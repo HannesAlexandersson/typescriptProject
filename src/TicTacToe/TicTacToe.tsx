@@ -1,20 +1,21 @@
 import Square from '../Square/Square.jsx';
 import { useEffect, useState } from 'react';
 
+
 function TicTacToe(){    
-    const [squares, setSquares] = useState(Array(9).fill(''));
-    const [isXTurn, setIsXTurn] = useState(true);
-    const [status, setStatus] = useState('');
+    const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
+    const [isXTurn, setIsXTurn] = useState<boolean>(true);
+    const [status, setStatus] = useState<string>('');
     
-    function handleClick(getCurrentSquare){
-        let cpySquares = [...squares];
+    function handleClick(getCurrentSquare: number): void {
+        const cpySquares: string[] = [...squares];
         if(getWinner(cpySquares) || cpySquares[getCurrentSquare]) return;
         cpySquares[getCurrentSquare] = isXTurn ? 'X' : 'O';
         setIsXTurn(!isXTurn);
         setSquares(cpySquares);
     }
     //winnable patterns:
-    function getWinner(squares){
+    function getWinner(squares: string[]): string | null {
         const winnerPatterns = [
             [0,1,2],
             [3,4,5],
@@ -34,7 +35,7 @@ function TicTacToe(){
         return null
     }
 
-    function handleRestart(){
+    function handleRestart(): void{
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
     }
