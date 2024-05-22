@@ -1,8 +1,8 @@
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
-import { getRandomInt, winnerPatterns } from '../../lib/utils/utils.ts';
+import { winnerPatterns } from '../../lib/utils/utils.ts';
 
 
 
@@ -13,7 +13,38 @@ function AiMode(){
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);
     const [isVsComputer, setIsVsComputer] = useState<boolean>(true);
-    const [isComputerTurn, setIsComputerTurn] = useState<boolean>(false);
+   
+
+    function minimax(newSquares: string[], depth: number, isMaximizing: boolean): number {
+        const winner = getWinner(newSquares);
+        if (winner === 'X') return -10 + depth;
+        if (winner === 'O') return 10 - depth; 
+        if (newSquares.every(square => square !== '')) return 0; 
+    
+        if (isMaximizing) {
+          let bestScore = -Infinity;
+          for (let i = 0; i < newSquares.length; i++) {
+            if (newSquares[i] === '') {
+              newSquares[i] = 'O';
+              const score = minimax(newSquares, depth + 1, false);
+              newSquares[i] = '';
+              bestScore = Math.max(score, bestScore);
+            }
+          }
+          return bestScore;
+        } else {
+          let bestScore = Infinity;
+          for (let i = 0; i < newSquares.length; i++) {
+            if (newSquares[i] === '') {
+              newSquares[i] = 'X';
+              const score = minimax(newSquares, depth + 1, true);
+              newSquares[i] = '';
+              bestScore = Math.min(score, bestScore);
+            }
+          }
+          return bestScore;
+        }
+      }
 
 
 
@@ -26,21 +57,28 @@ function AiMode(){
         setIsXTurn(!isXTurn);
       }
     
-      
+   
+
       function computerMove() {
-        const emptySquares: number[] = squares
-          .map((val: string, index: number) => (val === '' ? index : -1))
-          .filter(val => val !== -1);
-    
-        if (emptySquares.length > 0) {
-          const randomIndex = emptySquares[Math.floor(Math.random() * emptySquares.length)];
-          const cpySquares: string[] = [...squares];
-          cpySquares[randomIndex] = 'O';
-          setSquares(cpySquares);
-          setIsXTurn(true);
+        let bestScore = -Infinity;
+        let move = -1;
+      
+        for (let i = 0; i < squares.length; i++) {
+          if (squares[i] === '') {
+            squares[i] = 'O';
+            const score = minimax(squares, 0, false);
+            squares[i] = '';
+            if (score > bestScore) {
+              bestScore = score;
+              move = i;
+            }
+          }
+        }
+      
+        if (move !== -1) {
+          handleClick(move);
         }
       }
-
     
     function getWinner(squares: string[]): string | null {
         for (let i = 0; i < winnerPatterns.length; i++) {
@@ -50,33 +88,35 @@ function AiMode(){
           }
         }
         return null;
-      }
+    }
 
-      const handleRestart = (): void => {
-        setIsXTurn(true);
-        setSquares(Array(9).fill(''));
-        setStatus('');
-        setIsExploding(false);
-      };
-    
-      useEffect(() => {
-        const winner: string | null = getWinner(squares);
-        if (winner) {
-          setStatus(`Winner is ${winner}!!!`);
-          setIsExploding(true);
-        } else if (squares.every(item => item !== '')) {
-          setStatus('This is a draw! Please restart the game!');
-        } else {
-          setStatus(`Next player is ${isXTurn ? 'X' : 'O'}`);
-        }
-      }, [squares]);
-    
-      useEffect(() => {
-        if (!isXTurn && isVsComputer) {
-          const timeoutId = setTimeout(computerMove, 500); // Delay AI move for better UX
-          return () => clearTimeout(timeoutId);
-        }
-      }, [isXTurn, squares, isVsComputer]);
+    const handleRestart = (): void => {
+    setIsXTurn(true);
+    setSquares(Array(9).fill(''));
+    setStatus('');
+    setIsExploding(false);
+    };
+
+    //Updates the game status whenever squares changes.
+    useEffect(() => {
+    const winner: string | null = getWinner(squares);
+    if (winner) {
+        setStatus(`Winner is ${winner}!!!`);
+        setIsExploding(true);
+    } else if (squares.every(item => item !== '')) {
+        setStatus('This is a draw! Please restart the game!');
+    } else {
+        setStatus(`Next player is ${isXTurn ? 'X' : 'O'}`);
+    }
+    }, [squares]);
+
+    //Triggers the AI move when it's the AI's turn.
+    useEffect(() => {
+    if (!isXTurn && isVsComputer) {
+        const timeoutId = setTimeout(computerMove, 500);
+        return () => clearTimeout(timeoutId);
+    }
+    }, [isXTurn, squares, isVsComputer]);
     
     
 

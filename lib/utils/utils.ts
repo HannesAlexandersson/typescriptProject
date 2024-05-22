@@ -14,3 +14,9 @@ export const getRandomInt = (min: number, max: number) => {
     [0,4,8],
     [2,4,6],
 ];
+
+export const SCORES: Record<string, number> = {
+    1: 1,
+    0: 0,
+    2: -1,
+  };

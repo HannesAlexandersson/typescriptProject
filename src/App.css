@@ -7,6 +7,10 @@
   align-items: center;
   margin-top: 2rem;
 }
+.ticTacToe-container > h1{
+  color: var(--primaryAccent);  
+  text-align: center;
+}
 .square{
   border: 1px solid red;
   float: left;
