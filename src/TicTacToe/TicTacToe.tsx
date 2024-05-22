@@ -2,6 +2,7 @@ import { MouseEventHandler, useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
+import { getRandomInt } from '../../lib/utils/utils.ts';
 
 
 
@@ -10,9 +11,9 @@ function TicTacToe(){
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);
-    const [gameMode, setGameMode] = useState<string>('normal');
-    const [activeButton, setActiveButton] = useState<string | null>(null);
+    
    
+    
     
     
     function handleClick(getCurrentSquare: number): void {
@@ -46,26 +47,10 @@ function TicTacToe(){
     function handleRestart(): void{
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
-        setIsExploding(false)
+        setIsExploding(false)        
     }
 
-    function handleSetNormal(): void{
-        console.log('click');
-        setGameMode('normal');
-        setActiveButton('normal');
-        handleRestart();
-    }
-    function handleSetOnline(): void{
-        setGameMode('online');
-        setActiveButton('online');
-        handleRestart();
-    }
-    function handleSetComputer(): void{
-        setGameMode('computer');
-        setActiveButton('computer');
-        handleRestart();
-    }
-
+   
 
     useEffect(() => {
         if(!getWinner(squares) && squares.every(item => item !== '')){
@@ -84,11 +69,7 @@ function TicTacToe(){
         <div className="ticTacToe-container"> 
         <h1>{status}</h1>
         {isExploding && <ConfettiExplosion />}
-        <div className="Btn-group">
-            <Button className={`gamemode-btn ${activeButton === 'normal' ? 'active' : ''}`} onClick={handleSetNormal}>1v1</Button>
-            <Button className={`gamemode-btn ${activeButton === 'online' ? 'active' : ''}`} onClick={handleSetOnline}>Online</Button>
-            <Button className={`gamemode-btn ${activeButton === 'computer' ? 'active' : ''}`} onClick={handleSetComputer}>Single</Button>
-        </div>
+        
             <div className="row">
                 <Square value={squares[0]} onClick={()=> handleClick(0)}/>
                 <Square value={squares[1]} onClick={()=> handleClick(1)}/>
