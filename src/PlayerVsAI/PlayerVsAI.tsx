@@ -12,7 +12,7 @@ function AiMode(){
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);
-    const [isVsComputer, setIsVsComputer] = useState<boolean>(true);
+   
    
 
     function minimax(newSquares: string[], depth: number, isMaximizing: boolean): number {
@@ -112,11 +112,11 @@ function AiMode(){
 
     //Triggers the AI move when it's the AI's turn.
     useEffect(() => {
-    if (!isXTurn && isVsComputer) {
+    if (!isXTurn) {
         const timeoutId = setTimeout(computerMove, 500);
         return () => clearTimeout(timeoutId);
     }
-    }, [isXTurn, squares, isVsComputer]);
+    }, [isXTurn, squares]);
     
     
 
