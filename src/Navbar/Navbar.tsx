@@ -10,7 +10,7 @@ type NavbarProps = {
 function Navbar({ setLoggedIn, loggedIn }: NavbarProps){
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
-    const handleClosePopup = () => {
+    const handleClosePopup = () => {      
       setShowPopup(false); 
     };  
 
@@ -32,15 +32,14 @@ function Navbar({ setLoggedIn, loggedIn }: NavbarProps){
                <li>
                {!loggedIn ? (
                    <button className={style.signInBtn} onClick={handleLoginClick}>                    
-                        <p>Sign in</p>
-                        {showPopup && <Login onClose={handleClosePopup} />}
+                        <p>Sign in</p>                        
                     </button>
                     ): (
                     <button className={style.signInBtn} onClick={handleLogoutClick}>
                         <p>Sign out</p>
                     </button>
                     )}
-                    
+                    {showPopup && <Login setLoggedIn={setLoggedIn} onClose={handleClosePopup} />}
                </li>      
            </ul>
         </div>

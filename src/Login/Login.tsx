@@ -5,9 +5,12 @@ import style from './login.module.css';
 
 
 type HandleClickType = (value: boolean) => void;
+type LoginProps = {
+    setLoggedIn: HandleClickType;
+    onClose: () => void;
+  };
 
-
-function Login(setLoggedIn: HandleClickType, handleClosePopup: HandleClickType){  
+function Login({ setLoggedIn, onClose }: LoginProps){  
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [errors, setErrors] = useState<string>('');
@@ -31,12 +34,14 @@ function Login(setLoggedIn: HandleClickType, handleClosePopup: HandleClickType){
         promise.then(() => setLoggedIn(true));
     }
         
-    return(
-        <>            
+    return(                
            
-            <div className={style.main}> 
+        <div className={style.main}> 
 
             <div className={style.content_wrapper}>
+                <div className={style.close}>
+                <Button onClick={onClose} className={style.close_btn} ><h1>X</h1></Button>
+                </div>
                 <div className={style.content_text}>
                     <h1>Sign in</h1>                    
                 </div>
@@ -64,13 +69,11 @@ function Login(setLoggedIn: HandleClickType, handleClosePopup: HandleClickType){
                 <div className={style.content_btn_wrapper}>
                     <Button onClick={() => handleSignup()} className={style.content_btn} >CREATE ACCOUNT</Button>                    
                 </div>
-                <div className={style.content_btn_wrapper}>
-                    <Button onClick={() => handleClosePopup(true)} className={style.content_btn} >CLOSE POPUP</Button>                    
-                </div>
+                
             </div>          
            
         </div>
-    </>
+   
     );
 }
 

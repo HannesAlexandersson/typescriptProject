@@ -1,6 +1,6 @@
 .main{
     display: flex;
-    height: 100%;
+    height: 90%;
     width: 100%;
     flex-direction: column;
     justify-content: center;
@@ -11,13 +11,24 @@
     left: 50%;
     transform: translate(-50%, -50%);   
   
-    padding: 20.5rem;/*debugging remove*/
+    padding: 5rem 20.5rem;/*debugging remove*/
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.8));/*its a filter that makes the blurred background a little darker at the top and lighter at the bottom*/
    
     backdrop-filter: blur(20px); /*blur the background*/
     z-index: 99;
 }
-
+.close{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+.close_btn{
+    border: none;
+    background: none;
+   
+}
 /* MAIN CONTENT STARTS */
 .content_wrapper{
     display: flex;  
@@ -30,6 +41,8 @@
     flex-shrink: 0;       
     border-radius: 1.5rem;
     box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.25);
+    margin: 10rem 0rem 10rem 0rem;
+    position: relative;
 }
 .content_text{
     display: flex;
@@ -51,6 +64,7 @@
     font-weight: 700;
     line-height: 1.5rem; /* 100% */
     letter-spacing: 0.01125rem;
+    margin: 1rem;
 }
 .content_text > p{
     font-size: 1.25rem;
