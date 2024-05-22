@@ -3,19 +3,27 @@ import TicTacToe from "./TicTacToe/TicTacToe";
 import Title from './Title/Title';
 import Navbar from './Navbar/Navbar.tsx';
 import './App.css'
+import PlayerVsAI from "./PlayerVsAI/PlayerVsAI.tsx";
 
 
 
 function App() {
   const [loggedIn, setLoggedIn] = useState<boolean>(true);//switch to false in production or when login logic works
+  const [gameMode, setGameMode] = useState<string>('normal');
   
   return (
     <>
-      <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
-      {loggedIn && (
+      <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn} setGameMode={setGameMode} gameMode={gameMode} />
+      {loggedIn && gameMode === 'normal' && (
         <>
-          <Title>Tic Tac Toe</Title>
+          <Title>Player vs Player</Title>
           <TicTacToe />
+        </>
+      )}
+      {loggedIn && gameMode === 'computer' && (
+        <>
+          <Title>Player vs AI</Title>
+          <PlayerVsAI />
         </>
       )}
       {!loggedIn && <Title>Please log in or sign up to play the game.</Title>}
