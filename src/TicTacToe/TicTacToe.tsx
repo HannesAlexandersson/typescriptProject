@@ -10,10 +10,7 @@ function TicTacToe(){
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
-    const [isExploding, setIsExploding] = useState<boolean>(false);
-    
-   
-    
+    const [isExploding, setIsExploding] = useState<boolean>(false);    
     
     
     function handleClick(getCurrentSquare: number): void {

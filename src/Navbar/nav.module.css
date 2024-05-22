@@ -38,7 +38,7 @@
     justify-content: center;    
     gap: .275rem;
   }
-  .gamemodeBtn{
+  .gameModeBtn{
     background: var(--primaryBg);
     border-radius: 0.5rem;
     color: var(--primaryAccent);
@@ -49,10 +49,10 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
   }
-  .gamemodeBtn.active{
+  .gameModeBtn.active{
     background: var(--secondaryBg);
     transform: scale(0.95);
   }
-  .gamemodeBtn:hover{
+  .gameModeBtn:hover{
     background: var(--secondaryBg);
   }
