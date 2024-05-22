@@ -46,6 +46,7 @@ function TicTacToe(){
     function handleRestart(): void{
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
+        setIsExploding(false)
     }
 
     function handleSetNormal(): void{
@@ -71,13 +72,17 @@ function TicTacToe(){
             setStatus(`This is a draw! Please restart the game!`)
         }else if(getWinner(squares)){
             setIsExploding(true);
-            setStatus(`Winner is ${getWinner(squares)}!!!`)
+            setStatus(`Winner is ${getWinner(squares)}!!!`);            
         }else{
             setStatus(`Next player is ${isXTurn ? 'X' : 'O'}`)
         }
+
+        
     }, [squares, isXTurn]);
+
     return(
         <div className="ticTacToe-container"> 
+        <h1>{status}</h1>
         {isExploding && <ConfettiExplosion />}
         <div className="Btn-group">
             <Button className={`gamemode-btn ${activeButton === 'normal' ? 'active' : ''}`} onClick={handleSetNormal}>1v1</Button>
@@ -98,8 +103,7 @@ function TicTacToe(){
                 <Square value={squares[6]} onClick={()=> handleClick(6)}/>
                 <Square value={squares[7]} onClick={()=> handleClick(7)}/>
                 <Square value={squares[8]} onClick={()=> handleClick(8)}/>
-            </div>
-            <h1>{status}</h1>
+            </div>            
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
         </div>
 

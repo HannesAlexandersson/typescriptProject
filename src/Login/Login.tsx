@@ -24,15 +24,24 @@ function Login({ setLoggedIn, onClose }: LoginProps){
         setPassword(event.target.value);
     };
 
-    async function SignIn() {
-        const promise = login(email, password);
-        promise.then(() => setLoggedIn(true));
-    }
+    const SignIn = async () => {
+        try {
+          await login(email, password);
+          setLoggedIn(true);
+          setErrors(''); // Clear any previous errors
+        } catch (error) {
+          setErrors('There was an error with your submission.');
+        }
+      };
 
-    async function handleSignup(){
-        const promise = Signup(email, password);
-        promise.then(() => setLoggedIn(true));
-    }
+      const SignUp = async () => {
+        try{
+            await Signup(email, password);
+        }catch (error) {
+            setErrors('There was an error with your submission.');
+          }
+      }
+    
         
     return(                
            
@@ -67,7 +76,7 @@ function Login({ setLoggedIn, onClose }: LoginProps){
                     <h1>Sign up to be able to play</h1>                    
                 </div>
                 <div className={style.content_btn_wrapper}>
-                    <Button onClick={() => handleSignup()} className={style.content_btn} >CREATE ACCOUNT</Button>                    
+                    <Button onClick={() => SignUp()} className={style.content_btn} >CREATE ACCOUNT</Button>                    
                 </div>
                 
             </div>          
