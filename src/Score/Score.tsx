@@ -52,7 +52,7 @@ export default function Score() {
 
     return (
         <>
-            <div >
+            <div>
                 <div >Score Table</div>
             </div>
                 { score && Object.keys(score).map(name => (

@@ -4,6 +4,7 @@ import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
 import { getRandomInt } from '../../lib/utils/utils.ts';
 import Score from '../Score/Score.tsx';
+import NameForm from '../NameForm/NameForm.tsx';
 
 function TicTacToe(){    
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
@@ -84,7 +85,8 @@ function TicTacToe(){
                 <Square value={squares[7]} onClick={()=> handleClick(7)}/>
                 <Square value={squares[8]} onClick={()=> handleClick(8)}/>
             </div> 
-            { isWinner && <Score /> }           
+            { isWinner && <Score /> }  
+            { isWinner && <NameForm />}         
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
         </div>
 
