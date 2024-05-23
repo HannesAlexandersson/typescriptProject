@@ -33,8 +33,7 @@
   color: var(--primaryAccent);
   padding: 0 2rem 0 2rem;
 }
-.restart-btn, 
-.save-btn {
+.restart-btn {
   background-color:var(--secondaryAccent);
   border: none;
   color: white;
@@ -50,13 +49,11 @@
   transition: background-color 0.3s ease;
 }
 
-.restart-btn:hover,
-.save.btn:hover {
+.restart-btn:hover {
   background-color: #45a049;
 }
 
-.restart-btn:active,
-.save-btn:active {
+.restart-btn:active {
   background-color: var(#3e8e41);
   transform: scale(.9);
 }

@@ -59,9 +59,7 @@ export default function NameForm({ hide }: NameFormType) {
             if(success) {
                 setMessage('Your score is now saved!');
                 hide();
-            } else {
-                setMessage('Username already taken. Please choose another name.')
-            }
+            };
         });
     };
 

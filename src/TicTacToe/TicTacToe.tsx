@@ -91,9 +91,10 @@ function TicTacToe(){
                 <Square value={squares[7]} onClick={()=> handleClick(7)}/>
                 <Square value={squares[8]} onClick={()=> handleClick(8)}/>
             </div> 
-            { isWinner && <Score /> }  
+           
             { showNameForm && <NameForm hide={hideNameForm} />}         
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
+            { isWinner && <Score /> }  
         </div>
 
     );

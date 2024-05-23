@@ -21,7 +21,10 @@ type ScoreData = {
 export default function Score() {
     const [score, setScore] = useState<ScoreData>({});
 
- 
+
+    useEffect(() => {
+        getUserData();
+    },[])
 
     //get data
     function getUserData() {
