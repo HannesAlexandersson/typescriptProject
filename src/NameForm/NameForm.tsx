@@ -9,8 +9,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 getDatabase(app);
 
+interface NameFormType {
+    hide: () => void;
+};
 
-export default function UserName() {
+
+export default function NameForm({ hide }: NameFormType) {
     const [userName, setUserName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
 
@@ -54,6 +58,7 @@ export default function UserName() {
         writeUserData(userName).then((success) => {
             if(success) {
                 setMessage('Your score is now saved!');
+                hide();
             } else {
                 setMessage('Username already taken. Please choose another name.')
             }
@@ -66,7 +71,7 @@ export default function UserName() {
                 position: "absolute", 
                 top: "50%", 
                 left: "50%",
-                transform: "translate(-50%) translate(-50%)",
+                transform: "translateX(-50%) translateY(-50%)",
                 width: "200px",
                 backgroundColor: "white",
                 padding: "20px"
