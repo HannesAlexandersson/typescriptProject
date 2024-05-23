@@ -21,19 +21,7 @@ type ScoreData = {
 export default function Score() {
     const [score, setScore] = useState<ScoreData>({});
 
-    //add a user
-    function writeUserData(name: string, result: number) {
-        const db = getDatabase();
-        set(ref(db, 'users/' + name), {
-            username: name,
-            score: result
-        });
-    }
-
-    useEffect(() => {
-        writeUserData("Karo", 1);
-        getUserData();
-    },[])
+ 
 
     //get data
     function getUserData() {
