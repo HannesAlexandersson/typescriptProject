@@ -4,6 +4,7 @@ import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
 import { getRandomInt } from '../../lib/utils/utils.ts';
 import Score from '../Score/Score.tsx';
+import NameForm from '../NameForm/NameForm.tsx';
 
 function TicTacToe(){    
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
@@ -11,7 +12,7 @@ function TicTacToe(){
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);    
     const [isWinner, setIsWinner] = useState<boolean>(false);
-    
+    const [showNameForm, setShowNameForm] = useState<boolean>(false);
     
     function handleClick(getCurrentSquare: number): void {
         const cpySquares: string[] = [...squares];
@@ -19,6 +20,10 @@ function TicTacToe(){
         cpySquares[getCurrentSquare] = isXTurn ? 'X' : 'O';
         setIsXTurn(!isXTurn);
         setSquares(cpySquares);
+    }
+
+    function hideNameForm() {
+        setShowNameForm(false);
     }
     //winnable patterns:
     function getWinner(squares: string[]): string | null {
@@ -45,7 +50,8 @@ function TicTacToe(){
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
         setIsExploding(false)     
-        setIsWinner(false);   
+        setIsWinner(false);  
+        setShowNameForm(false); 
     }
 
    
@@ -55,6 +61,7 @@ function TicTacToe(){
             setStatus(`This is a draw! Please restart the game!`)
         }else if(getWinner(squares)){
             setIsWinner(true);
+            setShowNameForm(true);
             setIsExploding(true);
             setStatus(`Winner is ${getWinner(squares)}!!!`);            
         }else{
@@ -84,8 +91,10 @@ function TicTacToe(){
                 <Square value={squares[7]} onClick={()=> handleClick(7)}/>
                 <Square value={squares[8]} onClick={()=> handleClick(8)}/>
             </div> 
-            { isWinner && <Score /> }           
+           
+            { showNameForm && <NameForm hide={hideNameForm} />}         
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
+            { isWinner && <Score /> }  
         </div>
 
     );

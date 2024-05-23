@@ -21,17 +21,8 @@ type ScoreData = {
 export default function Score() {
     const [score, setScore] = useState<ScoreData>({});
 
-    //add a user
-    function writeUserData(name: string, result: number) {
-        const db = getDatabase();
-        set(ref(db, 'users/' + name), {
-            username: name,
-            score: result
-        });
-    }
 
     useEffect(() => {
-        writeUserData("Karo", 1);
         getUserData();
     },[])
 
@@ -52,7 +43,7 @@ export default function Score() {
 
     return (
         <>
-            <div >
+            <div>
                 <div >Score Table</div>
             </div>
                 { score && Object.keys(score).map(name => (
