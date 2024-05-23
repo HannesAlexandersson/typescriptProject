@@ -3,14 +3,14 @@ import ConfettiExplosion from 'react-confetti-explosion';
 import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
 import { getRandomInt } from '../../lib/utils/utils.ts';
-
-
+import Score from '../Score/Score.tsx';
 
 function TicTacToe(){    
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);    
+    const [isWinner, setIsWinner] = useState<boolean>(false);
     
     
     function handleClick(getCurrentSquare: number): void {
@@ -44,7 +44,8 @@ function TicTacToe(){
     function handleRestart(): void{
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
-        setIsExploding(false)        
+        setIsExploding(false)     
+        setIsWinner(false);   
     }
 
    
@@ -53,6 +54,7 @@ function TicTacToe(){
         if(!getWinner(squares) && squares.every(item => item !== '')){
             setStatus(`This is a draw! Please restart the game!`)
         }else if(getWinner(squares)){
+            setIsWinner(true);
             setIsExploding(true);
             setStatus(`Winner is ${getWinner(squares)}!!!`);            
         }else{
@@ -81,7 +83,8 @@ function TicTacToe(){
                 <Square value={squares[6]} onClick={()=> handleClick(6)}/>
                 <Square value={squares[7]} onClick={()=> handleClick(7)}/>
                 <Square value={squares[8]} onClick={()=> handleClick(8)}/>
-            </div>            
+            </div> 
+            { isWinner && <Score /> }           
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
         </div>
 
