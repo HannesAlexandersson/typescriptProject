@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
 import { winnerPatterns } from '../../lib/utils/utils.ts';
+import GameBoard from '../GameBoard/GameBoard.tsx';
 
 
 
@@ -59,7 +59,7 @@ function AiMode(){
     
    
 
-      function computerMove() {
+      function computerMove(): void {
         let bestScore = -Infinity;
         let move = -1;
       
@@ -97,7 +97,7 @@ function AiMode(){
     setIsExploding(false);
     };
 
-    //Updates the game status whenever squares changes.
+    //updates the game status whenever squares changes I.E whenever a player makes a move 
     useEffect(() => {
     const winner: string | null = getWinner(squares);
     if (winner) {
@@ -110,7 +110,7 @@ function AiMode(){
     }
     }, [squares]);
 
-    //Triggers the AI move when it's the AI's turn.
+    // triggers the AI move, also set an delay on the AI move for better user experience
     useEffect(() => {
     if (!isXTurn) {
         const timeoutId = setTimeout(computerMove, 500);
@@ -125,22 +125,9 @@ function AiMode(){
         <h1>{status}</h1>
         {isExploding && <ConfettiExplosion />}
         
-            <div className="row">
-                <Square value={squares[0]} onClick={()=> handleClick(0)}/>
-                <Square value={squares[1]} onClick={()=> handleClick(1)}/>
-                <Square value={squares[2]} onClick={()=> handleClick(2)}/>
-            </div>
-            <div className="row">
-                <Square value={squares[3]} onClick={()=> handleClick(3)}/>
-                <Square value={squares[4]} onClick={()=> handleClick(4)}/>
-                <Square value={squares[5]} onClick={()=> handleClick(5)}/>
-            </div>
-            <div className="row">
-                <Square value={squares[6]} onClick={()=> handleClick(6)}/>
-                <Square value={squares[7]} onClick={()=> handleClick(7)}/>
-                <Square value={squares[8]} onClick={()=> handleClick(8)}/>
-            </div>            
-            <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
+          <GameBoard squares={squares} onClick={handleClick} />
+            
+          <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
         </div>
     );
 }

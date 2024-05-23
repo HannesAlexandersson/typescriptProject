@@ -8,11 +8,11 @@
   margin-top: 2rem;
 }
 .ticTacToe-container > h1{
-  color: var(--primaryAccent);  
+  color: var(--secondaryAccent);  
   text-align: center;
 }
 .square{
-  border: 1px solid red;
+  border: 2px solid var(--primaryAccent);
   float: left;
   font-size: 40px;
   height: 100px;
@@ -23,14 +23,16 @@
   margin-top: -1px;
   cursor: pointer;
 }
-
+.game-board{
+  border: solid 1px var(--primaryAccent);
+}
 
 .Title {
   text-align: center;
   font-family: var(--defaultFont);
   font-size: 3em;
-  text-shadow: -4px 3px 12px black;
-  color: var(--primaryAccent);
+  text-shadow: -1px 0px 0px #673AB7;
+  color: var(--secondaryAccent);
   padding: 0 2rem 0 2rem;
 }
 .restart-btn {
