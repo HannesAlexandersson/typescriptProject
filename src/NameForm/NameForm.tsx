@@ -18,34 +18,42 @@ export default function UserName() {
     };
 
     //add a user
-    function writeUserData(userName: string) {
-        const db = getDatabase();
-        // set(ref(db, 'users/' + userName), {
-        //     username: userName,
-        //     score: 1
-        // });
-        const userRef = ref(db, 'users/' + userName);
+    function writeUserData(userName: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
 
-        get(userRef).then((snapshot) => {
-            if (snapshot.exists()) {
-                // User exists - update the score
-                const currentData = snapshot.val();
-                const newScore = currentData.score + 1;
-                update(userRef, {score: newScore });
-            } else {
-                // User doesn't exsist - create user
-                set(userRef, {
-                    username: userName,
-                    score: 1
-                });
-            }
+            const db = getDatabase();
+            const userRef = ref(db, 'users/' + userName);
+
+            get(userRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    resolve(false);
+                } else {
+                    // User doesn't exsist - create user
+                    set(userRef, {
+                        username: userName,
+                        score: 1
+                    }).then(() => {
+                        resolve(true);
+                    }).catch((error) => {
+                        reject(error);
+                    });
+                }
+            }).catch((error) => {
+                reject(error);
+            })
         });
     };
 
     const handleSaveClick = () => {
         saveName();
-        writeUserData(userName)
-    }
+        writeUserData(userName).then((success) => {
+            if(success) {
+                setMessage('Your score is now saved!');
+            } else {
+                setMessage('Username already taken. Please choose another name.')
+            }
+        });
+    };
 
 
 
