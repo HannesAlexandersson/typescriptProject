@@ -12,7 +12,7 @@ function App() {
   const [gameMode, setGameMode] = useState<string>('normal');
   
   return (
-    <>
+    <main className="overlay">
       <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn} setGameMode={setGameMode} gameMode={gameMode} />
       {loggedIn && gameMode === 'normal' && (
         <>
@@ -27,7 +27,7 @@ function App() {
         </>
       )}
       {!loggedIn && <Title>Please log in or sign up to play the game.</Title>}
-    </>
+    </main>
   );
 }
 

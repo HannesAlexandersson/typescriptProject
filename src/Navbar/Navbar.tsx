@@ -10,6 +10,7 @@ type NavbarProps = {
     setGameMode: React.Dispatch<React.SetStateAction<string>>;
     gameMode: string;
   };
+
 function Navbar({ setLoggedIn, loggedIn, setGameMode, gameMode }: NavbarProps){
   const [showPopup, setShowPopup] = useState<boolean>(false);
  
@@ -50,6 +51,7 @@ const handleLoginClick = (): void => {
     return (
         <div className={style.navWrapper}>          
            <ul className={style.list} >
+            {loggedIn &&
                <div className={style.BtnGroup}>
                 <li>
                   <Button className={`${style.gameModeBtn} ${activeButton === 'normal' ? style.active : ''}`} onClick={handleSetNormal}>1v1</Button>
@@ -61,19 +63,21 @@ const handleLoginClick = (): void => {
                   <Button className={`${style.gameModeBtn} ${activeButton === 'computer' ? style.active : ''}`} onClick={handleSetComputer}>vs AI</Button>
                 </li>
               </div>
-
-               <li>
-               {!loggedIn ? (
-                   <button className={style.signInBtn} onClick={handleLoginClick}>                    
-                        <p>Sign in</p>                        
-                    </button>
-                    ): (
-                    <button className={style.signInBtn} onClick={handleLogoutClick}>
-                        <p>Sign out</p>
-                    </button>
-                    )}
-                    {showPopup && <Login setLoggedIn={setLoggedIn} onClose={handleClosePopup} />}
-               </li>      
+              }
+              <div className={style.signBtn}>
+                <li>
+                {!loggedIn ? (
+                    <button className={style.signInBtn} onClick={handleLoginClick}>                    
+                          <p>Sign in</p>                        
+                      </button>
+                      ): (
+                      <button className={style.signInBtn} onClick={handleLogoutClick}>
+                          <p>Sign out</p>
+                      </button>
+                      )}
+                      {showPopup && <Login setLoggedIn={setLoggedIn} onClose={handleClosePopup} />}
+                </li>   
+               </div>   
            </ul>
         </div>
         

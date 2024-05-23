@@ -9,6 +9,12 @@
   --defaultFont: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body{
-  background-color: var(--primaryBg);;
+  /* background-color: var(--primaryBg); */
+  border-image: fill 1 linear-gradient(hsl(0 100% 50% / .7),hsl(39 100% 50% / .7),hsl(60 100% 50% / .7),hsl(120 100% 25% / .7),hsl(240 100% 50% / .7),hsl(275 100% 25% / .7),hsl(300 76% 72% / .7));/*ROYGBIV*/
+
   margin: auto;
+}
+
+main{
+  height: 100vh;
 }
