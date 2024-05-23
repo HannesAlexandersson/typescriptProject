@@ -8,7 +8,7 @@
   margin-top: 2rem;
 }
 .ticTacToe-container > h1{
-  color: var(--secondaryAccent);  
+  color: var(--primaryBg);  
   text-align: center;
 }
 .square{
@@ -34,6 +34,7 @@
   text-shadow: -1px 0px 0px #673AB7;
   color: var(--secondaryAccent);
   padding: 0 2rem 0 2rem;
+  margin-bottom: .725rem;
 }
 .restart-btn {
   background-color:var(--secondaryAccent);
@@ -58,4 +59,22 @@
 .restart-btn:active {
   background-color: var(#3e8e41);
   transform: scale(.9);
+}
+.gamemodeContainer{
+  margin-top: 0;
+}
+.gamemodeContainer > p{
+  font-size: 1.1em;
+  color: var(--primaryAccent);
+}
+.gamemodeContainer select, option{
+    width: 100%;
+    font-size: large;
+    cursor: pointer;
+}
+.pageWrapperAI{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
