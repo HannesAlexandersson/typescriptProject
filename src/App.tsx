@@ -4,28 +4,30 @@ import Title from './Title/Title';
 import Navbar from './Navbar/Navbar.tsx';
 import './App.css'
 import PlayerVsAI from "./PlayerVsAI/PlayerVsAI.tsx";
+import Scoreboard from './Scoreboard/Scoreboard';
 
 
 
 function App() {
-  const [gameMode, setGameMode] = useState<string>('normal');
+  const [gameMode, setGameMode] = useState<string>('Player VS Player');
   
   return (
     <main className="overlay">
       <Navbar setGameMode={setGameMode} gameMode={gameMode} />
-      {gameMode === 'normal' && (
+      
+      {gameMode === 'Player VS Player' && (
         <>
-          <Title>Player vs Player</Title>
+          
           <TicTacToe />
         </>
       )}
-      {gameMode === 'computer' && (
-        <>
-          <Title>Player vs AI</Title>
+      {gameMode === 'Player VS AI' && (
+        <>         
           <PlayerVsAI />
         </>
       )}
-      
+      <Title className="appTitle">Leaderboard:</Title>
+      <Scoreboard />
     </main>
   );
 }

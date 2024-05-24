@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Button from '../Button/Button';
-import logo from '../../public/logo.png';
+import logo from '/logo.png';
+import Title from '../Title/Title';
 import style from './nav.module.css';
 
 
@@ -18,33 +19,34 @@ function Navbar({ setGameMode, gameMode }: NavbarProps){
   }, [gameMode]);
 
   function handleSetNormal(): void{    
-    setGameMode('normal');
-    setActiveButton('normal');    
+    setGameMode('Player VS Player');
+    setActiveButton('Player VS Player');    
 }
 
 function handleSetComputer(): void{
-    setGameMode('computer');
-    setActiveButton('computer');   
+    setGameMode('Player VS AI');
+    setActiveButton('Player VS AI');   
 } 
 
-//app.logomakr.com/0N2Psm
+
     return (
-        <div className={style.navWrapper}>          
+        <div className={style.navWrapper}> 
+                    
            <ul className={style.list} >
             
                <div className={style.BtnGroup}>
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'normal' ? style.active : ''}`} onClick={handleSetNormal}>1v1</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS Player' ? style.active : ''}`} onClick={handleSetNormal}>1v1</Button>
                 </li>                
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'computer' ? style.active : ''}`} onClick={handleSetComputer}>vs AI</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS AI' ? style.active : ''}`} onClick={handleSetComputer}>vs AI</Button>
                 </li>
               </div>
-              
-              <div className={style.logoCont}>
-                                
-                    <img src={logo} alt="logo" />
-                   
+              <div>
+                <Title className={style.navTitle}>{gameMode}</Title>              
+              </div>
+              <div className={style.logoCont}>                                
+                    <img src={logo} alt="logo" />                   
                </div>   
            </ul>
         </div>

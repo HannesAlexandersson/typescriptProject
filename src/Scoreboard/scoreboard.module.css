@@ -1,0 +1,43 @@
+.header {
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.titleContainer {
+    display: flex;
+    white-space: nowrap; 
+    animation: horizontalScroll linear infinite;
+    animation-duration: var(--animation-duration); /* Use CSS variable for duration */
+}
+
+@keyframes horizontalScroll {
+    0% {
+        transform: translateX(100%);
+    }    
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    font-size: 1.725rem;
+    margin: 0;
+    white-space: nowrap;
+    margin-right: 1.275rem;
+    color: var(--primaryAccent);
+}
+
+/* Adjust for larger screens */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 1.725rem;
+    }
+}
