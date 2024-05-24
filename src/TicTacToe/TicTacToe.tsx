@@ -1,6 +1,5 @@
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-import Square from '../Square/Square.tsx';
 import Button from '../Button/Button.tsx';
 import { winnerPatterns } from '../../lib/utils/utils.ts';
 import Score from '../Score/Score.tsx';

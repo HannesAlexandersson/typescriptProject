@@ -10,8 +10,7 @@ type NavbarProps = {
     gameMode: string;
   };
 
-function Navbar({ setGameMode, gameMode }: NavbarProps){
-  const [showPopup, setShowPopup] = useState<boolean>(false); 
+function Navbar({ setGameMode, gameMode }: NavbarProps){  
   const [activeButton, setActiveButton] = useState<string | null>(null);
   
   useEffect(() => {
@@ -22,10 +21,7 @@ function Navbar({ setGameMode, gameMode }: NavbarProps){
     setGameMode('normal');
     setActiveButton('normal');    
 }
-function handleSetOnline(): void{
-    setGameMode('online');
-    setActiveButton('online');   
-}
+
 function handleSetComputer(): void{
     setGameMode('computer');
     setActiveButton('computer');   
@@ -39,10 +35,7 @@ function handleSetComputer(): void{
                <div className={style.BtnGroup}>
                 <li>
                   <Button className={`${style.gameModeBtn} ${activeButton === 'normal' ? style.active : ''}`} onClick={handleSetNormal}>1v1</Button>
-                </li>
-                <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'online' ? style.active : ''}`} onClick={handleSetOnline}>Online</Button>
-                </li>
+                </li>                
                 <li>
                   <Button className={`${style.gameModeBtn} ${activeButton === 'computer' ? style.active : ''}`} onClick={handleSetComputer}>vs AI</Button>
                 </li>
