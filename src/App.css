@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+ 
 }
 .ticTacToe-container > h1{
   color: var(--primaryBg);  
@@ -22,6 +22,7 @@
   margin-right: -1px;
   margin-top: -1px;
   cursor: pointer;
+  background: #ffffff3b;
 }
 .game-board{
   border: solid 1px var(--primaryAccent);

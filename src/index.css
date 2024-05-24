@@ -7,6 +7,8 @@
   --alternativeAccent: #3e8e41;
   
   --defaultFont: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  --squareOpa: #ffffff3b;
 }
 body{
   /* background-color: var(--primaryBg); */
