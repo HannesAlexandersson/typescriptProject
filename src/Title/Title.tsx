@@ -3,11 +3,12 @@
 
 type TitleChildren = {
     children: React.ReactNode;
+    className: string;
 }
-function Title({ children }: TitleChildren){
+function Title({ children, className }: TitleChildren){
 
     return(
-        <h1 className="Title">{children}</h1>
+        <h1 className={`${className} `}>{children}</h1>
     );
 }
 

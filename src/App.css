@@ -5,7 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+  gap: 1rem;
+  margin-top: 1rem;
 }
 .ticTacToe-container > h1{
   color: var(--primaryBg);  
@@ -31,7 +32,7 @@
 .Title {
   text-align: center;
   font-family: var(--defaultFont);
-  font-size: 3em;
+  font-size: 2em;
   text-shadow: -1px 0px 0px #673AB7;
   color: var(--secondaryAccent);
   padding: 0 2rem 0 2rem;
@@ -78,4 +79,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.appTitle{
+  text-align: center;
+    font-family: var(--defaultFont);
+    font-size: 2em;
+    text-shadow: -1px 0px 0px #673AB7;
+    color: var(--secondaryAccent);
+    padding: 0 2rem 0 2rem;
+    margin-bottom: .725rem;
 }

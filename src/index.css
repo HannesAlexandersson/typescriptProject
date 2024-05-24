@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Danfo&family=Poetsen+One&display=swap');
 :root{
   --primaryBg: darkslategray;
   --secondaryBg: rgb(85, 116, 116);
@@ -6,17 +7,23 @@
   --secondaryAccent: #4CAF50;
   --alternativeAccent: #3e8e41;
   
-  --defaultFont: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  --defaultFont: "Danfo", 'Arial Narrow', Arial, sans-serif;
+  --PrimaryFont: "Poetsen One", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
   --squareOpa: #ffffff3b;
 }
-body{
-  /* background-color: var(--primaryBg); */
+html{
   border-image: fill 1 linear-gradient(hsl(0 100% 50% / .7),hsl(39 100% 50% / .7),hsl(60 100% 50% / .7),hsl(120 100% 25% / .7),hsl(240 100% 50% / .7),hsl(275 100% 25% / .7),hsl(300 76% 72% / .7));/*ROYGBIV*/
-
+  height: 100%;
+  background-size: cover;
+}
+body{  
+  font-family: var(--PrimaryFont);
   margin: auto;
+  min-height: 100%;
+ 
 }
 
 main{
-  height: 100vh;
+  min-height: 100%;
 }
