@@ -24,16 +24,7 @@
     color: var(--primaryAccent);
     text-decoration: none;
 }
-.signInBtn{
-    background: none;
-    border: none;   
-    cursor: pointer;
-}
-.signInBtn > p{
-    color: var(--primaryAccent);
-    font-family: var(--defaultFont);
-    font-size: 1.1em;
-}
+
 .BtnGroup{
     display: flex;
     justify-content: center;    
@@ -56,4 +47,20 @@
   }
   .gameModeBtn:hover{
     background: var(--secondaryBg);
+  }
+
+  .logoCont{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logoCont img{
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    cursor: pointer;
+    user-select: none;
   }

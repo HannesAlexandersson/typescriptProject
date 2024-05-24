@@ -11,7 +11,7 @@ getDatabase(app);
 
 interface NameFormType {
     hide: () => void;
-};
+}
 
 
 export default function NameForm({ hide }: NameFormType) {
@@ -51,7 +51,7 @@ export default function NameForm({ hide }: NameFormType) {
                 reject(error);
             })
         });
-    };
+    }
 
     const handleSaveClick = () => {
         saveName();
@@ -59,9 +59,9 @@ export default function NameForm({ hide }: NameFormType) {
             if(success) {
                 setMessage('Your score is now saved!');
                 hide();
-            };
+            }
         });
-    };
+    }
 
 
     return (
