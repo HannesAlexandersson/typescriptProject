@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { FirebaseApp, initializeApp } from 'firebase/app';
-import { Database, getDatabase, get, ref, child, DatabaseReference } from 'firebase/database';
+import { Database, getDatabase, get, ref, child } from 'firebase/database';
 import style from './scoreboard.module.css';
 import Title from '../Title/Title';
 

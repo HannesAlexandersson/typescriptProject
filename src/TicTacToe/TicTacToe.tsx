@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import Button from '../Button/Button.tsx';
 import { winnerPatterns } from '../../lib/utils/utils.ts';
-import Score from '../Score/Score.tsx';
 import NameForm from '../NameForm/NameForm.tsx';
 import GameBoard from '../GameBoard/GameBoard.tsx';
 
@@ -12,7 +11,6 @@ function TicTacToe(): React.ReactNode{
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
     const [isExploding, setIsExploding] = useState<boolean>(false);    
-    const [isWinner, setIsWinner] = useState<boolean>(false);
     const [showNameForm, setShowNameForm] = useState<boolean>(false);
     
     function handleClick(getCurrentSquare: number): void {
@@ -41,8 +39,7 @@ function TicTacToe(): React.ReactNode{
     function handleRestart(): void{
         setIsXTurn(true)
         setSquares(Array(9).fill(''))
-        setIsExploding(false)     
-        setIsWinner(false);  
+        setIsExploding(false)      
         setShowNameForm(false); 
     }
 
@@ -52,7 +49,6 @@ function TicTacToe(): React.ReactNode{
         if(!getWinner(squares) && squares.every(item => item !== '')){
             setStatus(`This is a draw! Please restart the game!`)
         }else if(getWinner(squares)){
-            setIsWinner(true);
             setShowNameForm(true);
             setIsExploding(true);
             setStatus(`Winner is ${getWinner(squares)}!!!`);            
