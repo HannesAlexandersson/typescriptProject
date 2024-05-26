@@ -4,6 +4,7 @@ import Navbar from './Navbar/Navbar';
 import './App.css'
 import PlayerVsAI from "./PlayerVsAI/PlayerVsAI";
 import Scoreboard from './Scoreboard/Scoreboard';
+import Score from "./Score/Score";
 
 
 
@@ -22,6 +23,11 @@ function App() {
       {gameMode === 'Player VS AI' && (
         <>         
           <PlayerVsAI />
+        </>
+      )}
+      {gameMode === 'Score board' && (
+        <>         
+          <Score />
         </>
       )}
       

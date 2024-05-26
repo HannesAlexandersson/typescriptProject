@@ -27,6 +27,10 @@ function handleSetComputer(): void{
     setActiveButton('Player VS AI');   
 } 
 
+function handleSetScoreBoard(): void{
+  setGameMode('Score board');
+  setActiveButton('Score board');   
+} 
 
     return (
         <div className={style.navWrapper}> 
@@ -39,6 +43,9 @@ function handleSetComputer(): void{
                 </li>                
                 <li>
                   <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS AI' ? style.active : ''}`} onClick={handleSetComputer}>1 vs AI</Button>
+                </li>
+                <li>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'Score board' ? style.active : ''}`} onClick={handleSetScoreBoard}>Score board</Button>
                 </li>
               </div>
               <div>

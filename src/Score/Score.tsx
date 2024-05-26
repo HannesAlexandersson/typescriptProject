@@ -1,6 +1,7 @@
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { getDatabase, get, ref, child } from 'firebase/database';
 import { useState, useEffect } from 'react';
+import style from './score.module.css'
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
@@ -14,7 +15,7 @@ type ScoreResult = {
 };
 
 type ScoreData = {
-    // we don't know how many results we will get, so this will be a dynamic type 
+    // we don't what the keys will be since, they are basen on the user input (their username), so this will be a dynamic type and the result witll look like this ->
     [key: string]: ScoreResult;
 };
 
@@ -43,15 +44,14 @@ export default function Score(): React.ReactNode {
 
     return (
         <>
-            <div>
-                {/* <div >Score Table</div> */}
-            </div>
-                { score && Object.keys(score).map(name => (
-                <div key={name}>
-                    {name} - {score[name].score}
-                </div>
+            <div className={style.score}>     
+                {score && Object.keys(score).map(name => (
+                    <div key={name}>
+                        {name} - {score[name].score}
+                    </div>
                 ))
-            }
+                }
+            </div>
     </>
     )
 }

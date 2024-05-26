@@ -10,6 +10,7 @@ const firebaseConfig = {
 const app: FirebaseApp = initializeApp(firebaseConfig);
 getDatabase(app);
 
+//
 interface NameFormType {
     hide: () => void;
 }
@@ -18,10 +19,6 @@ interface NameFormType {
 export default function NameForm({ hide }: NameFormType): React.ReactNode {
     const [userName, setUserName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
-
-    const saveName = () => {
-        sessionStorage.setItem('userName', userName);
-    };
 
     // Add or update user score
     function writeUserData(userName: string): Promise<boolean> {
@@ -55,7 +52,6 @@ export default function NameForm({ hide }: NameFormType): React.ReactNode {
     }
 
     const handleSaveClick = () => {
-        saveName();
         writeUserData(userName).then((success) => {
             if(success) {
                 setMessage('Your score is now saved!');
