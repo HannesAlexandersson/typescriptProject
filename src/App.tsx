@@ -1,6 +1,5 @@
 import { useState} from "react";
 import TicTacToe from "./TicTacToe/TicTacToe";
-import Title from './Title/Title';
 import Navbar from './Navbar/Navbar.tsx';
 import './App.css'
 import PlayerVsAI from "./PlayerVsAI/PlayerVsAI.tsx";
@@ -17,7 +16,6 @@ function App() {
       
       {gameMode === 'Player VS Player' && (
         <>
-          
           <TicTacToe />
         </>
       )}
@@ -26,7 +24,7 @@ function App() {
           <PlayerVsAI />
         </>
       )}
-      <Title className="appTitle">Leaderboard:</Title>
+      
       <Scoreboard />
     </main>
   );

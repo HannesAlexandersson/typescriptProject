@@ -1,6 +1,4 @@
 
-
-
 type TitleChildren = {
     children: React.ReactNode;
     className: string;

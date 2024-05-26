@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, get, ref, child } from 'firebase/database';
 import style from './scoreboard.module.css';
+import Title from '../Title/Title';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
@@ -33,6 +34,7 @@ function Scoreboard() {
         }
     }, [scores]);
 
+
     function getUserData() {
         const dbRef = ref(database);
         get(child(dbRef, 'users/'))
@@ -53,25 +55,28 @@ function Scoreboard() {
     }
     
     return (
-        <div className={style.header}>
-            <div 
-                className={style.titleContainer} 
-                ref={titleContainerRef}
-                style={{ animationDuration: `${animationDuration}s` }}
-            >
-                {scores.map((name, index) => (
-                    <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
-                         <h1>{index + 1}: {name.username} - {name.score} p </h1>            
-                    </div>
-                ))}                 
+        <>
+            <Title className="appTitle" >Leaderboard:</Title>
+            <div className={style.header}>
+                <div 
+                    className={style.titleContainer} 
+                    ref={titleContainerRef}
+                    style={{ animationDuration: `${animationDuration}s` }}
+                >
+                    {scores.map((name, index) => (
+                        <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
+                            <h1>{index + 1}: {name.username} - {name.score} p </h1>            
+                        </div>
+                    ))}                 
 
-                {scores.map((name, index) => (
-                    <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
-                        <h1>{index + 1}: {name.username} - {name.score} p </h1>                                        
-                    </div>
-                ))}                    
-            </div>             
-        </div>
+                    {scores.map((name, index) => (
+                        <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
+                            <h1>{index + 1}: {name.username} - {name.score} p </h1>                                        
+                        </div>
+                    ))}                    
+                </div>             
+            </div>
+        </>
     );
 }
 
