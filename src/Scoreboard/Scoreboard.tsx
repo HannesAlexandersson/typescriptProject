@@ -29,7 +29,7 @@ function Scoreboard() {
     useEffect(() => {
         if (titleContainerRef.current) {
             const containerWidth = titleContainerRef.current.scrollWidth + 1000; //here we adjust the width of the pseudo container
-            const duration = containerWidth / 500; //here we set the speed of the animation
+            const duration = containerWidth / 300; //here we set the speed of the animation
             setAnimationDuration(duration);
         }
     }, [scores]);
