@@ -1,6 +1,5 @@
 import { useState} from "react";
 import TicTacToe from "./TicTacToe/TicTacToe";
-import Title from './Title/Title';
 import Navbar from './Navbar/Navbar';
 import './App.css'
 import PlayerVsAI from "./PlayerVsAI/PlayerVsAI";
