@@ -12,18 +12,21 @@
 
   --squareOpa: #ffffff3b;
 }
-html{
-  border-image: fill 1 linear-gradient(hsl(0 100% 50% / .7),hsl(39 100% 50% / .7),hsl(60 100% 50% / .7),hsl(120 100% 25% / .7),hsl(240 100% 50% / .7),hsl(275 100% 25% / .7),hsl(300 76% 72% / .7));/*ROYGBIV*/
+html {
   height: 100%;
-  background-size: cover;
-}
-body{  
-  font-family: var(--PrimaryFont);
-  margin: auto;
-  min-height: 100%;
- 
+  margin: 0; 
 }
 
-main{
-  min-height: 100%;
+body {
+  height: 100%;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(hsl(0 100% 50% / .7), hsl(39 100% 50% / .7), hsl(60 100% 50% / .7), hsl(120 100% 25% / .7), hsl(240 100% 50% / .7), hsl(275 100% 25% / .7), hsl(300 76% 72% / .7)) no-repeat center center fixed;
+  background-size: cover;
+  font-family: var(--PrimaryFont);
+}
+
+main {
+  flex: 1; 
 }

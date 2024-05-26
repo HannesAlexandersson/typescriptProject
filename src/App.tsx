@@ -1,9 +1,9 @@
 import { useState} from "react";
 import TicTacToe from "./TicTacToe/TicTacToe";
 import Title from './Title/Title';
-import Navbar from './Navbar/Navbar.tsx';
+import Navbar from './Navbar/Navbar';
 import './App.css'
-import PlayerVsAI from "./PlayerVsAI/PlayerVsAI.tsx";
+import PlayerVsAI from "./PlayerVsAI/PlayerVsAI";
 import Scoreboard from './Scoreboard/Scoreboard';
 
 

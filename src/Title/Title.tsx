@@ -1,11 +1,10 @@
+import React from 'react';
 
-
-
-type TitleChildren = {
+type TitleProps = {
     children: React.ReactNode;
-    className: string;
+    className?: string;
 }
-function Title({ children, className }: TitleChildren){
+function Title({ children, className }: TitleProps): React.ReactNode{
 
     return(
         <h1 className={`${className} `}>{children}</h1>
