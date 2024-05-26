@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, get, ref, child } from 'firebase/database';
+import { FirebaseApp, initializeApp } from 'firebase/app';
+import { Database, getDatabase, get, ref, child, DatabaseReference } from 'firebase/database';
 import style from './scoreboard.module.css';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
 };
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const app: FirebaseApp = initializeApp(firebaseConfig);
+const database: Database = getDatabase(app);
 
 type ScoreResult = {
     score: string;
@@ -16,10 +16,10 @@ type ScoreResult = {
 
 
 
-function Scoreboard() {  
+function Scoreboard(): React.ReactNode {  
     const [scores, setScores] = useState<ScoreResult[]>([]);
     const titleContainerRef = useRef<HTMLDivElement>(null);
-    const [animationDuration, setAnimationDuration] = useState(0);
+    const [animationDuration, setAnimationDuration] = useState<number>(0);
 
     useEffect(() => {
         getUserData();
@@ -27,14 +27,14 @@ function Scoreboard() {
 
     useEffect(() => {
         if (titleContainerRef.current) {
-            const containerWidth = titleContainerRef.current.scrollWidth + 1000; //here we adjust the width of the pseudo container
-            const duration = containerWidth / 500; //here we set the speed of the animation
+            const containerWidth: number = titleContainerRef.current.scrollWidth + 1000; //here we adjust the width of the pseudo container
+            const duration: number = containerWidth / 500; //here we set the speed of the animation
             setAnimationDuration(duration);
         }
     }, [scores]);
 
-    function getUserData() {
-        const dbRef = ref(database);
+    function getUserData(): void {
+        const dbRef: DatabaseReference = ref(database);
         get(child(dbRef, 'users/'))
         .then((snapshot) => {
             if (snapshot.exists()) {

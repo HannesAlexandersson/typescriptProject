@@ -8,7 +8,7 @@ type Props = {
     onClick?: MouseEventHandler<HTMLButtonElement>;
    
 }
-function Button({ onClick, className, children,}: Props){   
+function Button({ onClick, className, children,}: Props): React.ReactNode{   
     
 
     return(

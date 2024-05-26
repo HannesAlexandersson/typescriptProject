@@ -8,7 +8,7 @@ import GameBoard from '../GameBoard/GameBoard.tsx';
 
 
 
-function AiMode(){   
+function AiMode(): React.ReactNode{   
   const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
   const [isXTurn, setIsXTurn] = useState<boolean>(true);
   const [status, setStatus] = useState<string>('');

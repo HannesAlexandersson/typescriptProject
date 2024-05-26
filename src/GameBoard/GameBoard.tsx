@@ -5,7 +5,7 @@ type GameBoardProps = {
     onClick: (index: number) => void;
   };
 
-function GameBoard({ squares, onClick }: GameBoardProps){
+function GameBoard({ squares, onClick }: GameBoardProps): React.ReactNode{
     return (
         <div className="game-board">
           <div className="row">

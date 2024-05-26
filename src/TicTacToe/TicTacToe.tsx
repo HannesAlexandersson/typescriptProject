@@ -7,7 +7,7 @@ import NameForm from '../NameForm/NameForm.tsx';
 import GameBoard from '../GameBoard/GameBoard.tsx';
 
 
-function TicTacToe(){    
+function TicTacToe(): React.ReactNode{    
     const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
     const [isXTurn, setIsXTurn] = useState<boolean>(true);
     const [status, setStatus] = useState<string>('');
@@ -23,7 +23,7 @@ function TicTacToe(){
         setSquares(cpySquares);
     }
 
-    function hideNameForm() {
+    function hideNameForm(): void {
         setShowNameForm(false);
     }
     

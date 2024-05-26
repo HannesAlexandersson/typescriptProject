@@ -4,7 +4,7 @@ type Props = {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function Square({value, onClick}: Props){
+function Square({value, onClick}: Props): React.ReactNode{
     return (
     <button onClick={onClick} className="square">
         {value}

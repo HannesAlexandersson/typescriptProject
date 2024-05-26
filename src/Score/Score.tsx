@@ -1,11 +1,11 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseApp, initializeApp } from 'firebase/app';
 import { getDatabase, get, ref, child } from 'firebase/database';
 import { useState, useEffect } from 'react';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
 }
-const app = initializeApp(firebaseConfig);
+const app: FirebaseApp = initializeApp(firebaseConfig);
 getDatabase(app);
 
 type ScoreResult = {
@@ -18,7 +18,7 @@ type ScoreData = {
     [key: string]: ScoreResult;
 };
 
-export default function Score() {
+export default function Score(): React.ReactNode {
     const [score, setScore] = useState<ScoreData>({});
 
 
@@ -27,7 +27,7 @@ export default function Score() {
     },[])
 
     //get data
-    function getUserData() {
+    function getUserData(): void {
         const dbRef = ref(getDatabase());
         get(child(dbRef, 'users/'))
         .then((snapshot) => {

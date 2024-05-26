@@ -15,7 +15,7 @@ function App() {
     <main className="overlay">
       <Navbar setGameMode={setGameMode} gameMode={gameMode} />
       
-      {gameMode === 'Player VS Player' && (
+      {gameMode === 'P1 VS P2' && (
         <>
           
           <TicTacToe />

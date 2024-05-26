@@ -1,12 +1,12 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase, set, get, ref, update } from 'firebase/database';
+import { FirebaseApp, initializeApp } from 'firebase/app';
+import { getDatabase, set, get, ref, update, Database, DatabaseReference } from 'firebase/database';
 import { useState } from 'react';
 import Button from '../Button/Button';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
 }
-const app = initializeApp(firebaseConfig);
+const app: FirebaseApp = initializeApp(firebaseConfig);
 getDatabase(app);
 
 interface NameFormType {
@@ -14,7 +14,7 @@ interface NameFormType {
 }
 
 
-export default function NameForm({ hide }: NameFormType) {
+export default function NameForm({ hide }: NameFormType): React.ReactNode {
     const [userName, setUserName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
 
@@ -26,14 +26,14 @@ export default function NameForm({ hide }: NameFormType) {
     function writeUserData(userName: string): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
 
-            const db = getDatabase();
-            const userRef = ref(db, 'users/' + userName);
+            const db: Database = getDatabase();
+            const userRef: DatabaseReference = ref(db, 'users/' + userName);
 
             get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     // User exists - update the score
                     const currentData = snapshot.val();
-                    const newScore = currentData.score + 1;
+                    const newScore: number = currentData.score + 1;
                     update(userRef, {score: newScore });
                     resolve(true);
                 } else {

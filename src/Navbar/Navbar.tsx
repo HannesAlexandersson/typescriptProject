@@ -5,13 +5,12 @@ import Title from '../Title/Title';
 import style from './nav.module.css';
 
 
-type NavbarProps = {  
-    
+type NavbarProps = {      
     setGameMode: React.Dispatch<React.SetStateAction<string>>;
     gameMode: string;
   };
 
-function Navbar({ setGameMode, gameMode }: NavbarProps){  
+function Navbar({ setGameMode, gameMode }: NavbarProps): React.ReactNode{  
   const [activeButton, setActiveButton] = useState<string | null>(null);
   
   useEffect(() => {
@@ -19,7 +18,7 @@ function Navbar({ setGameMode, gameMode }: NavbarProps){
   }, [gameMode]);
 
   function handleSetNormal(): void{    
-    setGameMode('Player VS Player');
+    setGameMode('P1 VS P2');
     setActiveButton('Player VS Player');    
 }
 
@@ -36,10 +35,10 @@ function handleSetComputer(): void{
             
                <div className={style.BtnGroup}>
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS Player' ? style.active : ''}`} onClick={handleSetNormal}>1v1</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS Player' ? style.active : ''}`} onClick={handleSetNormal}>1 v 1</Button>
                 </li>                
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS AI' ? style.active : ''}`} onClick={handleSetComputer}>vs AI</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS AI' ? style.active : ''}`} onClick={handleSetComputer}>1 vs AI</Button>
                 </li>
               </div>
               <div>
