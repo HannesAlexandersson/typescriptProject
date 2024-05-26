@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, set, get, ref, child } from 'firebase/database';
+import { getDatabase, get, ref, child } from 'firebase/database';
 import { useState, useEffect } from 'react';
 
 const firebaseConfig = {
@@ -34,7 +34,7 @@ export default function Score() {
             if (snapshot.exists()) {
                 setScore(snapshot.val());
             } else {
-                console.log("No data avaiable");
+                console.log("No data available");
             }
         }).catch((Error) => {
             console.log(Error);
