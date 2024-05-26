@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { Database, getDatabase, get, ref, child, DatabaseReference } from 'firebase/database';
 import style from './scoreboard.module.css';
+import Title from '../Title/Title';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
@@ -28,13 +29,13 @@ function Scoreboard(): React.ReactNode {
     useEffect(() => {
         if (titleContainerRef.current) {
             const containerWidth: number = titleContainerRef.current.scrollWidth + 1000; //here we adjust the width of the pseudo container
-            const duration: number = containerWidth / 500; //here we set the speed of the animation
+            const duration: number = containerWidth / 300; //here we set the speed of the animation
             setAnimationDuration(duration);
         }
     }, [scores]);
 
-    function getUserData(): void {
-        const dbRef: DatabaseReference = ref(database);
+    function getUserData() {
+        const dbRef = ref(database);
         get(child(dbRef, 'users/'))
         .then((snapshot) => {
             if (snapshot.exists()) {
@@ -53,25 +54,28 @@ function Scoreboard(): React.ReactNode {
     }
     
     return (
-        <div className={style.header}>
-            <div 
-                className={style.titleContainer} 
-                ref={titleContainerRef}
-                style={{ animationDuration: `${animationDuration}s` }}
-            >
-                {scores.map((name, index) => (
-                    <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
-                         <h1>{index + 1}: {name.username} - {name.score} p </h1>            
-                    </div>
-                ))}                 
+        <>
+            <Title className="appTitle" >Leaderboard:</Title>
+            <div className={style.header}>
+                <div 
+                    className={style.titleContainer} 
+                    ref={titleContainerRef}
+                    style={{ animationDuration: `${animationDuration}s` }}
+                >
+                    {scores.map((name, index) => (
+                        <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
+                            <h1>{index + 1}: {name.username} - {name.score} p </h1>            
+                        </div>
+                    ))}                 
 
-                {scores.map((name, index) => (
-                    <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
-                        <h1>{index + 1}: {name.username} - {name.score} p </h1>                                        
-                    </div>
-                ))}                    
-            </div>             
-        </div>
+                    {scores.map((name, index) => (
+                        <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
+                            <h1>{index + 1}: {name.username} - {name.score} p </h1>                                        
+                        </div>
+                    ))}                    
+                </div>             
+            </div>
+        </>
     );
 }
 

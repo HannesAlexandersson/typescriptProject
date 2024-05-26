@@ -2,6 +2,7 @@ import { FirebaseApp, initializeApp } from 'firebase/app';
 import { getDatabase, set, get, ref, update, Database, DatabaseReference } from 'firebase/database';
 import { useState } from 'react';
 import Button from '../Button/Button';
+import style from './nameForm.module.css';
 
 const firebaseConfig = {
     databaseURL: "https://tictactoe-3349b-default-rtdb.europe-west1.firebasedatabase.app",
@@ -65,16 +66,8 @@ export default function NameForm({ hide }: NameFormType): React.ReactNode {
 
 
     return (
-        <div style={{
-                position: "absolute", 
-                top: "50%", 
-                left: "50%",
-                transform: "translateX(-50%) translateY(-50%)",
-                width: "200px",
-                backgroundColor: "white",
-                padding: "20px"
-            }}>
-            <div>
+        <div className={style.container}>
+            <div className={style.centered}>
                 <input
                     type="text"
                     value={userName}
@@ -82,7 +75,9 @@ export default function NameForm({ hide }: NameFormType): React.ReactNode {
                     placeholder="Enter your name"
                 />
             </div>
+            <div className={style.button}>
             <Button onClick={() => handleSaveClick()} className='restart-btn'>Save</Button>
+            </div>
             {message && <p>{message}</p>}
         </div>
     )

@@ -72,12 +72,8 @@ function TicTacToe(): React.ReactNode{
 
             <GameBoard squares={squares} onClick={handleClick} />
            
-        
-           
-           
             { showNameForm && <NameForm hide={hideNameForm} />}         
             <Button onClick={handleRestart} className='restart-btn'>Restart Game</Button>
-            { isWinner && <Score /> }  
         </div>
 
     );

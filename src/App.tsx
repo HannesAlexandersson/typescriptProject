@@ -17,7 +17,6 @@ function App() {
       
       {gameMode === 'P1 VS P2' && (
         <>
-          
           <TicTacToe />
         </>
       )}
@@ -26,7 +25,7 @@ function App() {
           <PlayerVsAI />
         </>
       )}
-      <Title className="appTitle">Leaderboard:</Title>
+      
       <Scoreboard />
     </main>
   );
