@@ -67,12 +67,7 @@ function Scoreboard(): React.ReactNode {
                             <h1>{index + 1}: {name.username} - {name.score} p </h1>            
                         </div>
                     ))}                 
-
-                    {scores.map((name, index) => (
-                        <div key={name.username} className={style.titleWrapper} aria-hidden="true" > 
-                            <h1>{index + 1}: {name.username} - {name.score} p </h1>                                        
-                        </div>
-                    ))}                    
+                  
                 </div>             
             </div>
         </>
