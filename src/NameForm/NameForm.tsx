@@ -35,7 +35,7 @@ export default function NameForm({ hide }: NameFormType): React.ReactNode {
                     update(userRef, {score: newScore });
                     resolve(true);
                 } else {
-                    // User doesn't exsist - add new entry
+                    // User doesn't exist - add new entry
                     set(userRef, {
                         username: userName,
                         score: 1

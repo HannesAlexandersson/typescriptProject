@@ -15,7 +15,7 @@ type ScoreResult = {
 };
 
 type ScoreData = {
-    // we don't what the keys will be since, they are basen on the user input (their username), so this will be a dynamic type and the result witll look like this ->
+    // we don't what the keys will be since, they are based on the user input (their username), so this will be a dynamic type and the result will look like this ->
     [key: string]: ScoreResult;
 };
 
