@@ -22,5 +22,6 @@
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "forceConsistentCasingInFileNames": "true"/*Ensures that file imports are case-sensitive, helping to avoid issues related to case mismatches in file names, especially on case-sensitive file systems like Linux*/
+  "forceConsistentCasingInFileNames": true, /*Ensures that file imports are case-sensitive, helping to avoid issues related to case mismatches in file names, especially on case-sensitive file systems like Linux*/
+  "esModuleInterop": true /*Enables compatibility with commonJS, which is useful for libraries that depend on commonjs modules*/
 }
