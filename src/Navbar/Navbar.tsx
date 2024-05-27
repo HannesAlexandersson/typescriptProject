@@ -43,6 +43,7 @@ function handleSetScoreBoard(): void{
         <div className={style.navWrapper}> 
                     
            <ul className={style.list} >
+            <div className={style.dropdownCont}>
             <Button onClick={toggleDropdown} className={`${style.gameModeBtn} ${style.Dropdown}`}>MENU</Button>
             {dropdownOpen && (
                <div className={style.BtnGroup}>
@@ -57,6 +58,7 @@ function handleSetScoreBoard(): void{
                 </li>
               </div>
               )}
+            </div>
               <div>
                 <Title className={style.navTitle}>{gameMode}</Title>              
               </div>

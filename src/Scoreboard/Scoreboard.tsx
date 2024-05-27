@@ -28,8 +28,8 @@ function Scoreboard(): React.ReactNode {
 
     useEffect(() => {
         if (titleContainerRef.current) {
-            const containerWidth: number = titleContainerRef.current.scrollWidth + 1000; //here we adjust the width of the pseudo container
-            const duration: number = containerWidth / 300; //here we set the speed of the animation
+            const containerWidth: number = titleContainerRef.current.scrollWidth + 10; //here we adjust the width of the pseudo container
+            const duration: number = containerWidth / 100; //here we set the speed of the animation
             setAnimationDuration(duration);
         }
     }, [scores]);

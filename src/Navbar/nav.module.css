@@ -83,3 +83,6 @@
 .Dropdown{
   position: relative;
 }
+.dropdownCont{
+  width: 30%;
+}
