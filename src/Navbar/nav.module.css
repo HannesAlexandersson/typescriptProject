@@ -32,11 +32,11 @@
   position: absolute;
     display: flex;
     justify-content: flex-start;
-    gap: .275rem;
+    gap: .5rem;
     width: 30%;
     flex-direction: column;
     z-index: 99;
-    bottom: -105%;
+    top: 100%;
 }
 .gameModeBtn{
   background: var(--primaryBg);
