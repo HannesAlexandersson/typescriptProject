@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import logo from '/logo.png';
 import Title from '../Title/Title';
-/* import DropdownMenu from '../DropDown/DropDown'; */
 import style from './nav.module.css';
-import DropdownMenu from '../DropDown/DropDown';
+
 
 
 type NavbarProps = {      

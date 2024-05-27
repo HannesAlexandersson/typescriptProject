@@ -10,7 +10,7 @@ const firebaseConfig = {
 const app: FirebaseApp = initializeApp(firebaseConfig);
 getDatabase(app);
 
-//
+
 interface NameFormType {
     hide: () => void;
 }
