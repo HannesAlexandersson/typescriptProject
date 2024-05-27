@@ -9,7 +9,7 @@ import Score from "./Score/Score";
 
 
 function App() {
-  const [gameMode, setGameMode] = useState<string>('Player VS Player');
+  const [gameMode, setGameMode] = useState<string>('P1 VS P2');
   
   return (
     <main className="overlay">
@@ -20,7 +20,7 @@ function App() {
           <TicTacToe />
         </>
       )}
-      {gameMode === 'Player VS AI' && (
+      {gameMode === 'P1 VS AI' && (
         <>         
           <PlayerVsAI />
         </>

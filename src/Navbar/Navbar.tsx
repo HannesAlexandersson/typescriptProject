@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import logo from '/logo.png';
 import Title from '../Title/Title';
+/* import DropdownMenu from '../DropDown/DropDown'; */
 import style from './nav.module.css';
+import DropdownMenu from '../DropDown/DropDown';
 
 
 type NavbarProps = {      
@@ -11,7 +13,12 @@ type NavbarProps = {
   };
 
 function Navbar({ setGameMode, gameMode }: NavbarProps): React.ReactNode{  
-  const [activeButton, setActiveButton] = useState<string | null>(null);
+  const [activeButton, setActiveButton] = useState<string | null>('P1 VS P2');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
   
   useEffect(() => {
     setActiveButton(gameMode); // to make the 'normal' btn be active as default from first render
@@ -19,12 +26,12 @@ function Navbar({ setGameMode, gameMode }: NavbarProps): React.ReactNode{
 
   function handleSetNormal(): void{    
     setGameMode('P1 VS P2');
-    setActiveButton('Player VS Player');    
+    setActiveButton('P1 VS P2');    
 }
 
 function handleSetComputer(): void{
-    setGameMode('Player VS AI');
-    setActiveButton('Player VS AI');   
+    setGameMode('P1 VS AI');
+    setActiveButton('P1 VS AI');   
 } 
 
 function handleSetScoreBoard(): void{
@@ -36,18 +43,20 @@ function handleSetScoreBoard(): void{
         <div className={style.navWrapper}> 
                     
            <ul className={style.list} >
-            
+            <Button onClick={toggleDropdown} className={`${style.gameModeBtn} ${style.Dropdown}`}>MENU</Button>
+            {dropdownOpen && (
                <div className={style.BtnGroup}>
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS Player' ? style.active : ''}`} onClick={handleSetNormal}>1 v 1</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'P1 VS P2' ? style.active : ''}`} onClick={handleSetNormal}>1 v 1</Button>
                 </li>                
                 <li>
-                  <Button className={`${style.gameModeBtn} ${activeButton === 'Player VS AI' ? style.active : ''}`} onClick={handleSetComputer}>1 vs AI</Button>
+                  <Button className={`${style.gameModeBtn} ${activeButton === 'P1 VS AI' ? style.active : ''}`} onClick={handleSetComputer}>P1 vs AI</Button>
                 </li>
                 <li>
                   <Button className={`${style.gameModeBtn} ${activeButton === 'Score board' ? style.active : ''}`} onClick={handleSetScoreBoard}>Score board</Button>
                 </li>
               </div>
+              )}
               <div>
                 <Title className={style.navTitle}>{gameMode}</Title>              
               </div>
