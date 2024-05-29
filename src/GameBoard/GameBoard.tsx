@@ -25,6 +25,6 @@ function GameBoard({ squares, onClick }: GameBoardProps): React.ReactNode{
           </div>
         </div>
       );
-    };
+    }
     
     export default GameBoard;

@@ -5,11 +5,12 @@ import './App.css'
 import PlayerVsAI from "./PlayerVsAI/PlayerVsAI";
 import Scoreboard from './Scoreboard/Scoreboard';
 import Score from "./Score/Score";
+import { GameMode } from "../lib/utils/utils";
 
 
 
 function App() {
-  const [gameMode, setGameMode] = useState<string>('P1 VS P2');
+  const [gameMode, setGameMode] = useState<GameMode>(GameMode.PlayerVsPlayer);
   
   return (
     <main className="overlay">

@@ -26,3 +26,9 @@ export const GAME_MODES: Record<string, string> = {
   medium: "medium",
   difficult: "difficult",
 };
+
+export enum GameMode {
+  PlayerVsPlayer = 'P1 VS P2',
+  PlayerVsComputer = 'P1 VS AI',
+  ScoreBoard = 'Score board',
+}

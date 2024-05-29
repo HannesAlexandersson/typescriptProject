@@ -2,14 +2,19 @@ import { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import logo from '/logo.png';
 import Title from '../Title/Title';
+import { GameMode } from "../../lib/utils/utils";
 import style from './nav.module.css';
 
 
 
-type NavbarProps = {      
+/* type NavbarProps = {      
     setGameMode: React.Dispatch<React.SetStateAction<string>>;
     gameMode: string;
-  };
+  }; */
+  interface NavbarProps {
+    gameMode: GameMode;
+    setGameMode: (mode: GameMode) => void;
+  }
 
 function Navbar({ setGameMode, gameMode }: NavbarProps): React.ReactNode{  
   const [activeButton, setActiveButton] = useState<string | null>('P1 VS P2');
@@ -24,18 +29,18 @@ function Navbar({ setGameMode, gameMode }: NavbarProps): React.ReactNode{
   }, [gameMode]);
 
   function handleSetNormal(): void{    
-    setGameMode('P1 VS P2');
-    setActiveButton('P1 VS P2');    
+    setGameMode(GameMode.PlayerVsPlayer);
+    setActiveButton(GameMode.PlayerVsPlayer);    
 }
 
 function handleSetComputer(): void{
-    setGameMode('P1 VS AI');
-    setActiveButton('P1 VS AI');   
+    setGameMode(GameMode.PlayerVsComputer);
+    setActiveButton(GameMode.PlayerVsComputer);   
 } 
 
 function handleSetScoreBoard(): void{
-  setGameMode('Score board');
-  setActiveButton('Score board');   
+  setGameMode(GameMode.ScoreBoard);
+  setActiveButton(GameMode.ScoreBoard);   
 } 
 
     return (
